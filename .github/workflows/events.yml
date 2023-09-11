@@ -1,8 +1,23 @@
-name: Events Demo 1
+name: Events - Activity Types and Filters
 on: 
   pull_request:
     types: [opened, edited]
+    branches:
+      - main
+      - 'feat/**' # feat/new feat/new/cat
+      - 'dev-*' # dev-new
+    
   workflow_dispatch:
+  push:
+    branches:
+      - main
+      - 'feat/**' # feat/new feat/new/cat
+      - 'dev-*' # dev-new
+      # developer-1 would not trigger this workflow
+    paths-ignore:
+      - '.github/workflows'
+      - '**/README.md'
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
